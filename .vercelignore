@@ -1,0 +1,6 @@
+# Keep the deployed site limited to the game itself
+.git/
+test/
+serve.js
+README.md
+.vercelignore

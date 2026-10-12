@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="color-scheme" content="dark">
+<title>PAC-MAN · 1000 Levels</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <header id="hud">
+    <div class="hud-item"><span class="label">1UP</span><span id="hud-score" class="value">00</span></div>
+    <div class="hud-item"><span class="label">HIGH</span><span id="hud-high" class="value">00</span></div>
+    <div class="hud-item"><span class="label">LEVEL</span><span id="hud-level" class="value">1</span></div>
+    <div class="hud-item"><span class="label">WORLD</span><span id="hud-world" class="value">Neon Blue</span></div>
+    <div class="hud-item"><span class="label">LIVES</span><span id="hud-lives" class="lives"></span></div>
+  </header>
+
+  <div id="stage">
+    <div id="frame">
+      <canvas id="game" width="448" height="496"></canvas>
+
+      <div id="screen-menu" class="overlay active">
+        <div class="panel">
+          <h1 class="title">PAC-MAN</h1>
+          <div class="subtitle">1000 LEVELS</div>
+          <p class="tagline">Eat every dot. Outsmart four ghosts.<br>Survive all 1000 mazes — easy to impossible.</p>
+          <button id="btn-start" class="btn primary">START GAME</button>
+          <button id="btn-continue" class="btn hidden">CONTINUE</button>
+          <button id="btn-levels" class="btn">LEVEL SELECT</button>
+          <button id="btn-help" class="btn">HOW TO PLAY</button>
+          <div class="hint">Arrows / WASD · P pause · M mute · Esc back</div>
+        </div>
+      </div>
+
+      <div id="screen-levels" class="overlay">
+        <div class="panel wide">
+          <h2>LEVEL SELECT</h2>
+          <div class="pager">
+            <button id="pg-prev" class="pgbtn" aria-label="previous page">‹</button>
+            <span id="pg-label">1 – 100 / 1000</span>
+            <button id="pg-next" class="pgbtn" aria-label="next page">›</button>
+          </div>
+          <div id="level-grid" class="level-grid"></div>
+          <button id="btn-levels-back" class="btn">BACK</button>
+        </div>
+      </div>
+
+      <div id="screen-help" class="overlay">
+        <div class="panel">
+          <h2>HOW TO PLAY</h2>
+          <ul class="help-list">
+            <li><b>Goal</b> — eat every dot and power pellet to clear the level.</li>
+            <li><b>Power pellets</b> — the big flashing dots turn ghosts blue for a few seconds. Eat them!</li>
+            <li><b>Ghost combo</b> — each ghost eaten in one power window scores 200 → 400 → 800 → 1600.</li>
+            <li><b>Fruit</b> — a bonus fruit appears twice per level for big points.</li>
+            <li><b>Lives</b> — you start with 3 and earn +1 every 10,000 points.</li>
+            <li><b>1000 levels</b> — 100 worlds in 10 epochs. Ghosts get faster, house releases tighten, power-pellet windows shrink (6.8 s → 1.6 s) and the AI spends almost all its time chasing by the end.</li>
+          </ul>
+          <div class="hint">Move: ← ↑ → ↓ or W A S D · Pause: P · Mute: M</div>
+          <button id="btn-help-back" class="btn">BACK</button>
+        </div>
+      </div>
+
+      <div id="screen-pause" class="overlay">
+        <div class="panel">
+          <h2>PAUSED</h2>
+          <button id="btn-resume" class="btn primary">RESUME</button>
+          <button id="btn-quit" class="btn">QUIT TO MENU</button>
+        </div>
+      </div>
+
+      <div id="screen-gameover" class="overlay">
+        <div class="panel">
+          <h2 class="danger">GAME OVER</h2>
+          <div class="stat" id="go-score">SCORE 0</div>
+          <div class="stat" id="go-level">REACHED LEVEL 1</div>
+          <button id="btn-retry" class="btn primary">PLAY AGAIN</button>
+          <button id="btn-go-menu" class="btn">MENU</button>
+        </div>
+      </div>
+
+      <div id="screen-win" class="overlay">
+        <div class="panel">
+          <h2 class="gold">ALL 1000 LEVELS CLEARED!</h2>
+          <div class="stat" id="win-score">SCORE 0</div>
+          <div class="stat" id="win-high">HIGH SCORE 0</div>
+          <button id="btn-win-menu" class="btn primary">AWESOME · MENU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="touch" class="touch">
+    <button class="tbtn up"    data-dir="up"    aria-label="up">▲</button>
+    <button class="tbtn left"  data-dir="left"  aria-label="left">◀</button>
+    <button class="tbtn right" data-dir="right" aria-label="right">▶</button>
+    <button class="tbtn down"  data-dir="down"  aria-label="down">▼</button>
+    <button class="tbtn pause" data-act="pause" aria-label="pause">❚❚</button>
+  </div>
+
+  <footer id="footer">
+    <span>←↑→↓ / WASD move</span>
+    <span>P pause</span>
+    <span>M mute</span>
+    <span>Esc back</span>
+    <span id="mute-ind"></span>
+  </footer>
+</div>
+
+<script src="js/rng.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/maze.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/render.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

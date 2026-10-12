@@ -1,0 +1,10 @@
+# Vercel link/deploy state (per-machine)
+.vercel/
+
+# Dependencies
+node_modules/
+
+# Misc
+*.log
+.DS_Store
+Thumbs.db
