@@ -1,6 +1,7 @@
-# Keep the deployed site limited to the game itself
+# Keep the deployed site limited to the Pac-Man game itself
 .git/
 test/
 serve.js
 README.md
 .vercelignore
+pocoman/
